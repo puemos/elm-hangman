@@ -48,6 +48,7 @@ var commonConfig = {
         new HtmlWebpackPlugin({
             template: 'src/static/index.html',
             inject: 'body',
+            favicon: 'src/favicon.ico',
             filename: 'index.html'
         })
     ]

@@ -1,8 +1,11 @@
 .box {
+  & + .box {
+    margin-left: 15px;
+  }
 }
 .boxWord {
   & + .boxWord {
-    margin-left: 20px;
+    margin-left: 40px;
   }
 }
 .boxList {

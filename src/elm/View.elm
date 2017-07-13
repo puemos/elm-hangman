@@ -56,7 +56,7 @@ letterButton preesed letter =
 letterList : Set Int -> Html Action
 letterList pressed =
     div
-        [ class "letterList row" ]
+        [ class "letterList row center" ]
         (List.map
             (letterButton pressed)
             allLetters
@@ -105,7 +105,7 @@ checkSentence pressed sentence =
 boxList : String -> Html Action
 boxList sentence =
     div
-        [ class "boxList row center middle" ]
+        [ class "boxList row center middle last-sm" ]
         (List.map
             boxWord
             (String.words sentence)
@@ -157,6 +157,10 @@ view model =
         div
             [ class "app column between" ]
             [ header strikes
-            , div [ class "main row around" ] [ boxList sentence, hangman strikes ]
+            , div [ class "main column around" ]
+                [ div [ class "hangman row middle center" ]
+                    [ hangman strikes ]
+                , boxList sentence
+                ]
             , letterList model.pressed
             ]
