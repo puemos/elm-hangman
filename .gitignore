@@ -1,4 +1,6 @@
-elm-stuff
-node_modules
-serve
-dist
+elm-stuff/
+node_modules/
+tmp/
+dist/
+yarn.lock
+

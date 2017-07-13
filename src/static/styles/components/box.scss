@@ -1,0 +1,10 @@
+.box {
+}
+.boxWord {
+  & + .boxWord {
+    margin-left: 20px;
+  }
+}
+.boxList {
+    padding: 0 20px;
+}

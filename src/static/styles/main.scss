@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+@import './vars';
+@import './components/index';
+@import './flexboxgrid/flexboxgrid';
+
+html{
+    font-family: 'Press Start 2P';
+}
+
+.app{
+    background-color: rgb(120,120,120);
+    color: white;
+    height: 100vh;
+    align-items: space-between;
+}
