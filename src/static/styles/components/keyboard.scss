@@ -1,4 +1,7 @@
-.letterButton {
+.keyboard {
+  padding-bottom: 20px;
+}
+.keyboardButton {
   position: relative;
   color: rgb(0, 0, 0);
   user-select: none;
@@ -16,7 +19,7 @@
   cursor: pointer;
 }
 
-.button__selected {
+.keyboardButton__disabled {
   &::before,
   &::after {
     position: absolute;
