@@ -1,7 +1,23 @@
-module Model exposing (Model, initial)
+module Model exposing (Status(..), Model, initial)
 
 import Set exposing (Set)
 import Char exposing (..)
+
+
+type Status
+    = Play
+    | Won
+    | Lost
+
+
+type alias Model =
+    { pressed : Set KeyCode
+    , sentence : String
+    , answer : String
+    , letters : List ( KeyCode, Bool )
+    , strikes : Int
+    , status : Status
+    }
 
 
 abc : List Char
@@ -14,15 +30,6 @@ toUpperCode char =
     Char.toCode (Char.toUpper char)
 
 
-type alias Model =
-    { pressed : Set KeyCode
-    , sentence : String
-    , answer : String
-    , letters : List ( KeyCode, Bool )
-    , strikes : Int
-    }
-
-
 initial : Model
 initial =
     { pressed = Set.empty
@@ -30,4 +37,5 @@ initial =
     , answer = "_____ ___"
     , letters = List.map (\c -> ( (toUpperCode c), False )) abc
     , strikes = 0
+    , status = Play
     }

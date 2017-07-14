@@ -23,14 +23,42 @@ update action model =
 
         Press char ->
             let
+                normalizeChar =
+                    Char.toCode (Char.toUpper (Char.fromCode char))
+
                 pressed =
                     onKeyPress char model.pressed
+
+                strikes =
+                    calcStrikes pressed model.sentence
+
+                answer =
+                    checkSentence pressed model.sentence
             in
                 ( { model
                     | pressed = pressed
-                    , letters = calcLetters pressed model.letters
-                    , strikes = calcStrikes pressed model.sentence
-                    , answer = checkSentence pressed model.sentence
+                    , letters =
+                        if (model.status == Play) then
+                            (calcLetters pressed model.letters)
+                        else
+                            model.letters
+                    , strikes =
+                        if (model.status == Play) then
+                            strikes
+                        else
+                            model.strikes
+                    , answer =
+                        if (model.status == Play) then
+                            answer
+                        else
+                            model.answer
+                    , status =
+                        if (strikes >= 10) then
+                            Lost
+                        else if (answer == model.sentence) then
+                            Won
+                        else
+                            model.status
                   }
                 , Cmd.none
                 )
@@ -85,6 +113,7 @@ didPressed preesed letter =
             (Char.toCode (Char.toUpper letter))
     in
         Set.member char preesed
+
 
 swapUnpresses : (Char -> Bool) -> Char -> Char
 swapUnpresses checkFn letter =

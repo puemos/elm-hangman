@@ -1,0 +1,38 @@
+.lost {
+  transition-property: opacity;
+  transition: 1s cubic-bezier(0.215, 0.610, 0.355, 1);
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(255, 138, 138, 0.8);
+  z-index: 1;
+  opacity: 1;
+
+  &.transparent {
+    z-index: 0;
+    opacity: 0;
+  }
+}
+.lost_caption {
+  font-size: 27px;
+  color: white;
+  font-family: 'Press Start 2P';
+  margin-bottom: 100px;
+}
+.lost_actions {
+  button {
+    transition-property: background color;
+    transition: 1s cubic-bezier(0.215, 0.610, 0.355, 1);
+    font-size: 10px;
+    padding: 10px 20px;
+    background: transparent;
+    border: 1px solid white;
+    outline: none;
+    color: white;
+    font-family: 'Press Start 2P';
+    &:hover {
+      background: white;
+      color: rgba(255, 138, 138, 1);
+    }
+  }
+}

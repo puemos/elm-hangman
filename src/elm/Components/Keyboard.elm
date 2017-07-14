@@ -6,8 +6,9 @@ import Html.Attributes exposing (style, class)
 import Actions exposing (..)
 import Char
 
-keyboardButton : ( Int, Bool ) -> Html Action
-keyboardButton ( charCode, isPreesed ) =
+
+keyboardButton : Bool -> ( Int, Bool ) -> Html Action
+keyboardButton disable ( charCode, isPreesed ) =
     let
         className =
             if isPreesed then
@@ -17,17 +18,23 @@ keyboardButton ( charCode, isPreesed ) =
 
         letter =
             (String.fromChar (Char.toUpper (Char.fromCode charCode)))
+
+        action =
+            if (disable) then
+                Noop
+            else
+                (Press charCode)
     in
         div
-            [ class ("keyboardButton " ++ className), onClick (Press charCode) ]
+            [ class ("keyboardButton " ++ className), onClick action ]
             [ text letter ]
 
 
-keyboard : List ( Int, Bool ) -> Html Action
-keyboard letters =
+keyboard : Bool -> List ( Int, Bool ) -> Html Action
+keyboard disable letters =
     div
         [ class "keyboard row center" ]
         (List.map
-            keyboardButton
+            (keyboardButton disable)
             letters
         )
