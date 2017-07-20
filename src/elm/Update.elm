@@ -26,42 +26,38 @@ update action model =
                 normalizeChar =
                     Char.toCode (Char.toUpper (Char.fromCode char))
 
-                pressed =
+                nextPressed =
                     onKeyPress char model.pressed
 
-                strikes =
-                    calcStrikes pressed model.sentence
+                nextStrikes =
+                    calcStrikes nextPressed model.sentence
 
-                answer =
-                    checkSentence pressed model.sentence
+                nextAnswer =
+                    checkSentence nextPressed model.sentence
+
+                nextLetters =
+                    (calcLetters nextPressed model.letters)
+
+                nextStatus = 
+                    if (nextStrikes >= 10) then
+                        Lost
+                    else if (nextAnswer == model.sentence) then
+                        Won
+                    else
+                        model.status
             in
-                ( { model
-                    | pressed = pressed
-                    , letters =
-                        if (model.status == Play) then
-                            (calcLetters pressed model.letters)
-                        else
-                            model.letters
-                    , strikes =
-                        if (model.status == Play) then
-                            strikes
-                        else
-                            model.strikes
-                    , answer =
-                        if (model.status == Play) then
-                            answer
-                        else
-                            model.answer
-                    , status =
-                        if (strikes >= 10) then
-                            Lost
-                        else if (answer == model.sentence) then
-                            Won
-                        else
-                            model.status
-                  }
-                , Cmd.none
-                )
+                if (model.status == Play) then
+                    ( { model
+                        | pressed = nextPressed
+                        , strikes = nextStrikes
+                        , answer = nextAnswer
+                        , letters = nextLetters
+                        , status = nextStatus
+                      }
+                    , Cmd.none
+                    )
+                else
+                    ( model, Cmd.none )
 
         Noop ->
             ( model, Cmd.none )
