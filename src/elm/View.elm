@@ -9,6 +9,7 @@ import Components.Keyboard exposing (keyboard)
 import Components.BoxList exposing (boxList)
 import Html.Events exposing (onClick)
 import Actions exposing (..)
+import Array
 
 
 (=>) : a -> b -> ( a, b )
@@ -52,9 +53,13 @@ renderWonScreen won =
 
 view : Model -> Html Action
 view model =
-    div
+    let
+        sentencePosBankLength =
+            Array.length model.sentencePossBank
+    in
+         div
         [ class "app column between" ]
-        [ header model.strikes
+        [ header model.sentencePos sentencePosBankLength model.strikes 
         , renderLostScreen (model.status == Model.Lost)
         , renderWonScreen (model.status == Model.Won)
         , div [ class "main column around" ]

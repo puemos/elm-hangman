@@ -1,38 +1,38 @@
 .won {
-  transition-property: opacity;
-  transition: 1s cubic-bezier(0.215, 0.610, 0.355, 1);
-  position: fixed;
-  height: 100vh;
-  width: 100vw;
-  background: rgba(105, 251, 130, 0.94);
-  z-index: 1;
-  opacity: 1;
-
-  &.transparent {
-    z-index: 0;
-    opacity: 0;
-  }
+    position: fixed;
+    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+    transition: 1s cubic-bezier(0.215, 0.610, 0.355, 1);
+    transition-property: opacity;
+    opacity: 1;
+    background: rgba(105, 251, 130, 0.94);
+    &.transparent {
+        z-index: -1;
+        width: 0;
+        opacity: 0;
+    }
 }
 .won_caption {
-  font-size: 27px;
-  color: white;
-  font-family: 'Press Start 2P';
-  margin-bottom: 100px;
+    margin-bottom: 100px;
+    font-family: 'Press Start 2P';
+    font-size: 27px;
+    color: white;
 }
 .won_actions {
-  button {
-    transition-property: background color;
-    transition: 1s cubic-bezier(0.215, 0.610, 0.355, 1);
-    font-size: 10px;
-    padding: 10px 20px;
-    background: transparent;
-    border: 1px solid white;
-    outline: none;
-    color: white;
-    font-family: 'Press Start 2P';
-    &:hover {
-      background: white;
-      color: rgba(105, 251, 130, 1);
+    button {
+        padding: 10px 20px;
+        font-family: 'Press Start 2P';
+        font-size: 10px;
+        transition: 1s cubic-bezier(0.215, 0.610, 0.355, 1);
+        transition-property: background color;
+        color: white;
+        border: 1px solid white;
+        outline: none;
+        background: transparent;
+        &:hover {
+            color: rgba(105, 251, 130, 1);
+            background: white;
+        }
     }
-  }
 }

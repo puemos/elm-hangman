@@ -1,52 +1,81 @@
 module Update exposing (update)
 
+import Task
 import Set exposing (..)
 import Model exposing (..)
 import Actions exposing (..)
 import Char exposing (..)
+import Array exposing (Array)
+
+
+nextKeyCode : Char.KeyCode
+nextKeyCode =
+    39
+
+
+prevKeyCode : Char.KeyCode
+prevKeyCode =
+    37
+
+
+maxStrikes : Int
+maxStrikes =
+    10
 
 
 update : Action -> Model -> ( Model, Cmd Action )
 update action model =
     case action of
         Init ->
-            ( Model.initial
-            , Cmd.none
-            )
+            ( loadSentence model.sentencePos model, Cmd.none )
 
-        Load string ->
-            ( { model
-                | sentence = string
-              }
-            , Cmd.none
-            )
+        Next ->
+            ( onNext model, Cmd.none )
+
+        Prev ->
+            ( onPrev model, Cmd.none )
 
         Press char ->
             let
                 normalizeChar =
                     Char.toCode (Char.toUpper (Char.fromCode char))
 
+                maybeSentence =
+                    Array.get model.sentencePos model.sentencePossBank
+
+                sentence =
+                    case maybeSentence of
+                        Just sentenceString ->
+                            sentenceString
+
+                        Nothing ->
+                            ("")
+
                 nextPressed =
                     onKeyPress char model.pressed
 
                 nextStrikes =
-                    calcStrikes nextPressed model.sentence
+                    calcStrikes nextPressed sentence
 
                 nextAnswer =
-                    checkSentence nextPressed model.sentence
+                    checkSentence nextPressed sentence
 
                 nextLetters =
                     (calcLetters nextPressed model.letters)
 
-                nextStatus = 
-                    if (nextStrikes >= 10) then
+                nextStatus =
+                    if (nextStrikes >= maxStrikes) then
                         Lost
-                    else if (nextAnswer == model.sentence) then
+                    else if (nextAnswer == sentence) then
                         Won
                     else
                         model.status
             in
-                if (model.status == Play) then
+                if (char == nextKeyCode) then
+                    ( onNext model, Cmd.none )
+                else if (char == prevKeyCode) then
+                    ( onPrev model, Cmd.none )
+                else if (model.status == Play) then
                     ( { model
                         | pressed = nextPressed
                         , strikes = nextStrikes
@@ -75,6 +104,50 @@ onKeyPress current pressed =
             pressed
 
 
+loadSentence : Int -> Model -> Model
+loadSentence pos model =
+    let
+        intiModel =
+            Model.initial
+
+        maybeSentence =
+            Array.get pos model.sentencePossBank
+
+        sentencePos =
+            case maybeSentence of
+                Just sentencePosString ->
+                    sentencePosString
+
+                Nothing ->
+                    ("")
+
+        nextPressed =
+            onKeyPress 0 intiModel.pressed
+
+        nextAnswer =
+            checkSentence nextPressed sentencePos
+    in
+        ({ intiModel
+            | answer = nextAnswer
+            , sentencePos = pos
+         }
+        )
+
+
+onNext : Model -> Model
+onNext model =
+    let
+        sentencePosBankLength =
+            Array.length model.sentencePossBank
+    in
+        (loadSentence (min (model.sentencePos + 1) (sentencePosBankLength - 1))) model
+
+
+onPrev : Model -> Model
+onPrev model =
+    loadSentence (max (model.sentencePos - 1) 0) model
+
+
 calcLetters : Set KeyCode -> List ( KeyCode, Bool ) -> List ( KeyCode, Bool )
 calcLetters pressed letters =
     let
@@ -85,19 +158,19 @@ calcLetters pressed letters =
 
 
 calcStrikes : Set Int -> String -> Int
-calcStrikes pressed sentence =
+calcStrikes pressed sentencePos =
     let
         checkFn =
             (didPressed pressed)
 
-        sentenceCharList =
-            (String.toList sentence)
+        sentencePosCharList =
+            (String.toList sentencePos)
 
-        sentenceCharListNoSpace =
-            (List.filter (\c -> c /= ' ') sentenceCharList)
+        sentencePosCharListNoSpace =
+            (List.filter (\c -> c /= ' ') sentencePosCharList)
 
         numOfCorrect =
-            (Set.fromList (List.filter checkFn sentenceCharListNoSpace))
+            (Set.fromList (List.filter checkFn sentencePosCharListNoSpace))
     in
         (Set.size pressed) - (Set.size numOfCorrect)
 
@@ -122,12 +195,12 @@ swapUnpresses checkFn letter =
 
 
 checkSentence : Set KeyCode -> String -> String
-checkSentence pressed sentence =
+checkSentence pressed sentencePos =
     let
         checkFn =
             (didPressed pressed)
 
-        sentenceCharList =
-            (String.toList sentence)
+        sentencePosCharList =
+            (String.toList sentencePos)
     in
-        String.fromList (List.map (swapUnpresses checkFn) sentenceCharList)
+        String.fromList (List.map (swapUnpresses checkFn) sentencePosCharList)

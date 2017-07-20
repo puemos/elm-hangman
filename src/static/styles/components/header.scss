@@ -1,3 +1,17 @@
-.header{
+.header {
     padding: 10px 20px;
+}
+
+.header-nav {
+    button {
+        font-family: 'Press Start 2P';
+        color: white;
+        border: none;
+        background: transparent;
+        margin: 0 20px;
+        outline: none;
+        &:active{
+            opacity: 0.3;
+        }
+    }
 }

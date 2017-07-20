@@ -2,6 +2,7 @@ module Actions exposing (Action(..))
 
 type Action
     = Init
-    | Load String
     | Press Int
+    | Next
+    | Prev
     | Noop

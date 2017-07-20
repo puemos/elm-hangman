@@ -24,14 +24,11 @@ boxWord word =
         )
 
 
-
-
-
 boxList : String -> Html Action
-boxList sentence =
+boxList sentencePos =
     div
         [ class "boxList row center middle last-sm" ]
         (List.map
             boxWord
-            (String.words sentence)
+            (String.words sentencePos)
         )
