@@ -127,6 +127,8 @@
   border: 1px solid white;
   outline: none;
   background: transparent; }
+  .won_actions button + button {
+    margin-left: 40px; }
   .won_actions button:hover {
     color: #69fb82;
     background: white; }
