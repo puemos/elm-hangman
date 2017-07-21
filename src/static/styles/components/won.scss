@@ -30,6 +30,9 @@
         border: 1px solid white;
         outline: none;
         background: transparent;
+        & + button {
+            margin-left: 40px;
+        }
         &:hover {
             color: rgba(105, 251, 130, 1);
             background: white;

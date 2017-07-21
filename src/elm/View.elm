@@ -45,8 +45,9 @@ renderWonScreen won =
     in
         div [ class className ]
             [ div [ class "won_caption" ] [ text "Saved!" ]
-            , div [ class "won_actions" ]
+            , div [ class "won_actions row" ]
                 [ button [ onClick Init ] [ text "Replay" ]
+                , button [ onClick Next ] [ text "Next" ]
                 ]
             ]
 
