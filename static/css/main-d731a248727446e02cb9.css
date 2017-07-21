@@ -61,7 +61,8 @@
   padding: 0 20px; }
 
 .hangman {
-  padding: 20px; }
+  padding: 20px;
+  zoom: 2; }
 
 .lost {
   position: fixed;
@@ -1007,3 +1008,8 @@ html {
   -webkit-box-align: space-between;
       -ms-flex-align: space-between;
           align-items: space-between; }
+
+.github-star {
+  position: fixed;
+  bottom: 0;
+  left: 0; }
