@@ -1,0 +1,9 @@
+# pkgs
+elm-stuff
+node_modules
+
+# dist
+dist
+
+# workspace
+.vscode
