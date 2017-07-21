@@ -186,7 +186,7 @@ didPressed preesed letter =
 
 swapUnpresses : (Char -> Bool) -> Char -> Char
 swapUnpresses checkFn letter =
-    if (letter == ' ') then
+    if not (Char.isUpper (Char.toUpper letter) ) then
         letter
     else if (checkFn letter) then
         letter
