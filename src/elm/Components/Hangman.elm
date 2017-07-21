@@ -15,99 +15,98 @@ toShow n strikes =
 
 hangman : Int -> Svg Action
 hangman strikes =
-    svg [ height "239", width "163" ]
-        [ g []
-            [ node "title"
+    svg [ height "135", width "81" ]
+        [ node "title"
+            []
+            [ text "Layer 1" ]
+        , g [ id "base", visibility (toShow 1 strikes) ]
+            [ node "line"
+                [ fill "none", id "svg_1", stroke "#000", strokeWidth "5", x1 "11.1835", x2 "70.00333", y1 "123.35251", y2 "123.35251" ]
                 []
-                [ text "Layer 1" ]
-            , g [ id "svg_39", stroke "null" ]
-                [ node "line"
-                    [ visibility (toShow 1 strikes), fill "none", id "svg_4", stroke "#000", strokeWidth "1.5", x1 "19.77653", x2 "151.23439", y1 "223.9448", y2 "223.9448" ]
-                    []
-                , text "   "
-                , node "line"
-                    [ visibility (toShow 2 strikes), fill "none", id "svg_5", stroke "#000", strokeWidth "7.5", x1 "129.93877", x2 "130.28816", y1 "224.60027", y2 "14.39974" ]
-                    []
-                , text "   "
-                , node "line"
-                    [ visibility (toShow 3 strikes), fill "none", id "svg_6", stroke "#000", strokeWidth "1.5", x1 "130.13203", x2 "58.88584", y1 "15.47098", y2 "15.47098" ]
-                    []
-                , text "   "
-                , node "line"
-                    [ visibility (toShow 4 strikes), fill "none", id "svg_7", stroke "#A98E49", strokeWidth "2.5", x1 "59.7276", x2 "59.7276", y1 "14.64269", y2 "65.06629" ]
-                    []
-                , g [ visibility (toShow 5 strikes), id "svg_32", stroke "null" ]
-                    [ g [ id "svg_13", stroke "null", transform "matrix(0.06406330070842253,0,0,0.06406330070842253,450.8467139489681,362.9110045742736) " ]
-                        [ g [ id "svg_14", stroke "null" ]
-                            [ Svg.path [ d "m-6327.7052,-4435.14847l0,100.234c0,17.374 103.613,31.458 231.427,31.458c127.813,0 231.426,-14.084 231.426,-31.458l0,-100.089c18.127,-3.718 31.761,-19.76 31.761,-38.987l0,-105.232c0,-21.302 -16.736,-38.695 -37.777,-39.749c-23.827,-102.456 -115.702,-178.796 -225.411,-178.796l-0.001,0c-109.724,0 -201.611,76.363 -225.421,178.844c-20.737,1.372 -37.135,18.617 -37.135,39.701l0,105.231c-0.001,19.003 13.321,34.884 31.131,38.843zm50.291,-120.802c0,-46.037 37.32,-83.358 83.357,-83.358l196.186,0c46.037,0 83.357,37.32 83.357,83.358l0,50.654c-16.326,18.067 -32.651,36.134 -48.977,54.2l-77.437,0c-4.98,-7.341 -13.391,-12.165 -22.931,-12.165c-15.294,0 -27.691,12.398 -27.691,27.691s12.398,27.691 27.691,27.691c8.284,0 15.711,-3.642 20.786,-9.405l85.733,0c8.709,0 11.068,-2.954 15.327,-7.213l27.477,-30.407c-0.949,45.213 -37.894,81.573 -83.335,81.573l-196.186,0c-46.037,0 -83.357,-37.32 -83.357,-83.358l0,-99.261l0,0z", id "svg_15", stroke "null" ]
-                                []
-                            , text "      "
-                            , Svg.path [ d "m-5849.1402,-4304.00247c-31.59,14.492 -130.282,25.063 -247.138,25.063c-116.857,0 -215.549,-10.572 -247.138,-25.063c-4.952,-2.271 -10.587,1.409 -10.587,6.857l0,76.345c0,19.348 115.387,35.033 257.725,35.033c142.337,0 257.724,-15.685 257.724,-35.033l0,-76.346c0,-5.447 -5.635,-9.127 -10.586,-6.856z", id "svg_16", stroke "null" ]
-                                []
-                            , text "     "
-                            ]
-                        ]
-                    , g [ id "svg_17", stroke "null", transform "matrix(0.06406330070842253,0,0,0.06406330070842253,450.8467139489681,362.9110045742736) " ]
-                        []
-                    , text "    "
-                    , g [ id "svg_18", stroke "null", transform "matrix(0.06406330070842253,0,0,0.06406330070842253,450.8467139489681,362.9110045742736) " ]
-                        []
-                    , text "    "
-                    , g [ id "svg_19", stroke "null", transform "matrix(0.06406330070842253,0,0,0.06406330070842253,450.8467139489681,362.9110045742736) " ]
-                        []
-                    , text "    "
-                    , g [ id "svg_20", stroke "null", transform "matrix(0.06406330070842253,0,0,0.06406330070842253,450.8467139489681,362.9110045742736) " ]
-                        []
-                    , text "    "
-                    , g [ id "svg_21", stroke "null", transform "matrix(0.06406330070842253,0,0,0.06406330070842253,450.8467139489681,362.9110045742736) " ]
-                        []
-                    , text "    "
-                    , g [ id "svg_22", stroke "null", transform "matrix(0.06406330070842253,0,0,0.06406330070842253,450.8467139489681,362.9110045742736) " ]
-                        []
-                    , text "    "
-                    , g [ id "svg_23", stroke "null", transform "matrix(0.06406330070842253,0,0,0.06406330070842253,450.8467139489681,362.9110045742736) " ]
-                        []
-                    , text "    "
-                    , g [ id "svg_24", stroke "null", transform "matrix(0.06406330070842253,0,0,0.06406330070842253,450.8467139489681,362.9110045742736) " ]
-                        []
-                    , text "    "
-                    , g [ id "svg_25", stroke "null", transform "matrix(0.06406330070842253,0,0,0.06406330070842253,450.8467139489681,362.9110045742736) " ]
-                        []
-                    , text "    "
-                    , g [ id "svg_26", stroke "null", transform "matrix(0.06406330070842253,0,0,0.06406330070842253,450.8467139489681,362.9110045742736) " ]
-                        []
-                    , text "    "
-                    , g [ id "svg_27", stroke "null", transform "matrix(0.06406330070842253,0,0,0.06406330070842253,450.8467139489681,362.9110045742736) " ]
-                        []
-                    , text "    "
-                    , g [ id "svg_28", stroke "null", transform "matrix(0.06406330070842253,0,0,0.06406330070842253,450.8467139489681,362.9110045742736) " ]
-                        []
-                    , text "    "
-                    , g [ id "svg_29", stroke "null", transform "matrix(0.06406330070842253,0,0,0.06406330070842253,450.8467139489681,362.9110045742736) " ]
-                        []
-                    , text "    "
-                    , g [ id "svg_30", stroke "null", transform "matrix(0.06406330070842253,0,0,0.06406330070842253,450.8467139489681,362.9110045742736) " ]
-                        []
-                    , text "    "
-                    , g [ id "svg_31", stroke "null", transform "matrix(0.06406330070842253,0,0,0.06406330070842253,450.8467139489681,362.9110045742736) " ]
-                        []
-                    , text "   "
-                    ]
-                , Svg.path [ visibility (toShow 6 strikes), d "m44.84277,97.37321l32.98716,0l0,0c4.32141,0 7.8246,15.7718 7.8246,35.22728c0,19.45548 -3.50319,35.22727 -7.8246,35.22727l-32.98716,0l0,0c-4.32141,0 -7.8246,-15.77179 -7.8246,-35.22727c0,-19.45549 3.50319,-35.22728 7.8246,-35.22728z", fill "#000000", id "svg_2", strokeWidth "1.5" ]
-                    []
-                , text "   "
-                , Svg.path [ visibility (toShow 7 strikes), d "m21.6722,101.09561l8.51718,0l0,0c1.11577,0 2.02028,9.97185 2.02028,22.27274c0,12.30088 -0.90451,22.27272 -2.02028,22.27272l-8.51718,0l0,0c-1.11577,0 -2.02028,-9.97184 -2.02028,-22.27272c0,-12.30089 0.90451,-22.27274 2.02028,-22.27274z", fill "#000000", id "svg_8", stroke "#000", strokeOpacity "null", strokeWidth "1.5", transform "rotate(22 25.930786132812436,123.3683319091797) " ]
-                    []
-                , text "   "
-                , Svg.path [ visibility (toShow 8 strikes), d "m42.78707,170.1471l12.33165,0l0,0c1.61548,0 2.92508,9.97185 2.92508,22.27274c0,12.30088 -1.3096,22.27272 -2.92508,22.27272l-12.33165,0l0,0c-1.61548,0 -2.92508,-9.97184 -2.92508,-22.27272c0,-12.30089 1.3096,-22.27274 2.92508,-22.27274z", fill "#000000", id "svg_9", stroke "#000", strokeOpacity "null", strokeWidth "1.5" ]
-                    []
-                , text "   "
-                , Svg.path [ visibility (toShow 9 strikes), d "m68.52134,169.63428l12.33165,0l0,0c1.61548,0 2.92508,9.97185 2.92508,22.27274c0,12.30088 -1.3096,22.27272 -2.92508,22.27272l-12.33165,0l0,0c-1.61548,0 -2.92508,-9.97184 -2.92508,-22.27272c0,-12.30089 1.3096,-22.27274 2.92508,-22.27274z", fill "#000000", id "svg_10", stroke "#000", strokeOpacity "null", strokeWidth "1.5" ]
-                    []
-                , text "   "
-                , Svg.path [ visibility (toShow 10 strikes), d "m92.95433,101.60843l8.51718,0l0,0c1.11578,0 2.02029,9.97185 2.02029,22.27274c0,12.30088 -0.90451,22.27272 -2.02029,22.27272l-8.51718,0l0,0c-1.11577,0 -2.02028,-9.97184 -2.02028,-22.27272c0,-12.30089 0.90451,-22.27274 2.02028,-22.27274z", fill "#000000", id "svg_11", stroke "#000", strokeOpacity "null", strokeWidth "1.5", transform "rotate(-22 97.21296691894526,123.88116455078124) " ]
-                    []
-                , text "  "
-                ]
+            , text "  "
+            ]
+        , g [ id "poll", visibility (toShow 2 strikes) ]
+            [ node "line"
+                [ fill "none", id "svg_5", stroke "#000", strokeWidth "5", transform "rotate(90 56.118484497070305,64.44848632812501) ", x1 "-3.88497", x2 "116.12197", y1 "64.44849", y2 "64.44849" ]
+                []
+            , text "  "
+            ]
+        , g [ id "support", visibility (toShow 3 strikes) ]
+            [ node "line"
+                [ fill "none", id "svg_6", stroke "#000", strokeWidth "5", transform "rotate(-141 44.18540954589844,15.687820434570312) ", x1 "29.20883", x2 "59.162", y1 "15.68777", y2 "15.68777" ]
+                []
+            , text "  "
+            ]
+        , g [ id "above", visibility (toShow 4 strikes) ]
+            [ node "line"
+                [ fill "none", id "svg_7", stroke "#000", strokeWidth "5", x1 "16.55079", x2 "57.15915", y1 "6.96102", y2 "6.96102" ]
+                []
+            , text "  "
+            ]
+        , g [ id "rope", visibility (toShow 5 strikes) ]
+            [ node "rect"
+                [ fill "#999999", height "2.46019", id "svg_25", strokeWidth "5", transform "rotate(90 21.00877380371094,29.422645568847656) ", width "40.77304", x "0.62226", y "28.19256" ]
+                []
+            , text "   "
+            , node "rect"
+                [ fill "#999999", height "2.46019", id "svg_13", strokeWidth "5", width "11.59903", x "12.57304", y "48.2277" ]
+                []
+            , text "  "
+            ]
+        , g [ id "head", visibility (toShow 6 strikes) ]
+            [ node "rect"
+                [ fill "#000000", height "11.59903", id "svg_8", strokeWidth "5", width "11.59903", x "12.57304", y "36.6284" ]
+                []
+            , text "   "
+            , node "rect"
+                [ fill "#ffffff", height "3.69068", id "svg_26", strokeWidth "5", width "3.69068", x "12.44894", y "36.59328" ]
+                []
+            , text "   "
+            , node "rect"
+                [ fill "#ffffff", height "3.69068", id "svg_27", strokeWidth "5", width "3.69068", x "20.5333", y "36.59328" ]
+                []
+            , text "  "
+            ]
+        , g [ id "body", visibility (toShow 7 strikes) ]
+            [ node "rect"
+                [ fill "#000000", height "23.90158", id "svg_14", strokeWidth "5", width "18.80492", x "9.10975", y "50.65303" ]
+                []
+            , text "  "
+            ]
+        , g [ id "left-arm", visibility (toShow 8 strikes) ]
+            [ node "rect"
+                [ fill "#000000", height "3.86643", id "svg_17", strokeWidth "5", width "3.86643", x "5.24331", y "74.20312" ]
+                []
+            , text "  "
+            ]
+        , g [ id "right-arm", visibility (toShow 9 strikes) ]
+            [ node "rect"
+                [ fill "#000000", height "3.86643", id "svg_18", strokeWidth "5", width "3.86643", x "27.73892", y "74.55462" ]
+                []
+            , text "  "
+            ]
+        , g [ id "left-foot1", visibility (toShow 10 strikes) ]
+            [ node "rect"
+                [ fill "#000000", height "3.33919", id "svg_19", strokeWidth "5", width "12.12654", x "12.44893", y "74.73036" ]
+                []
+            , text "   "
+            , node "rect"
+                [ fill "#000000", height "3.33919", id "svg_21", strokeWidth "5", transform "rotate(90 14.11854553222655,87.38415527343751) ", width "18.62917", x "4.80395", y "85.71457" ]
+                []
+            , text "   "
+            , node "rect"
+                [ fill "#000000", height "3.86643", id "svg_23", strokeWidth "5", width "3.86643", x "8.75825", y "96.52298" ]
+                []
+            , text "  "
+            ]
+        , g [ id "right-foot", visibility (toShow 11 strikes) ]
+            [ node "rect"
+                [ fill "#000000", height "3.33919", id "svg_22", strokeWidth "5", transform "rotate(90 22.905868530273427,87.38415527343751) ", width "18.62917", x "13.59128", y "85.71456" ]
+                []
+            , text "   "
+            , node "rect"
+                [ fill "#000000", height "3.86643", id "svg_24", strokeWidth "5", width "3.86643", x "24.57547", y "96.69873" ]
+                []
+            , text "  "
             ]
         ]

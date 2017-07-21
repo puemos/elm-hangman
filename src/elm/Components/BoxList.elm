@@ -1,7 +1,6 @@
 module Components.BoxList exposing (boxList)
 
 import Html exposing (div, Html, text, button)
-import Html.Events exposing (onClick)
 import Html.Attributes exposing (style, class)
 import Actions exposing (..)
 import Char

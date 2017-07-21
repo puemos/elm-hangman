@@ -20,7 +20,7 @@ prevKeyCode =
 
 maxStrikes : Int
 maxStrikes =
-    10
+    11
 
 
 update : Action -> Model -> ( Model, Cmd Action )
@@ -158,19 +158,19 @@ calcLetters pressed letters =
 
 
 calcStrikes : Set Int -> String -> Int
-calcStrikes pressed sentencePos =
+calcStrikes pressed sentence =
     let
         checkFn =
             (didPressed pressed)
 
-        sentencePosCharList =
-            (String.toList sentencePos)
+        sentenceCharList =
+            (String.toList sentence)
 
-        sentencePosCharListNoSpace =
-            (List.filter (\c -> c /= ' ') sentencePosCharList)
+        sentenceCharListNoSpace =
+            (List.filter (\c -> c /= ' ') sentenceCharList)
 
         numOfCorrect =
-            (Set.fromList (List.filter checkFn sentencePosCharListNoSpace))
+            (Set.fromList (List.filter checkFn sentenceCharListNoSpace))
     in
         (Set.size pressed) - (Set.size numOfCorrect)
 

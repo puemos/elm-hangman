@@ -1,7 +1,7 @@
 module View exposing (view)
 
-import Html exposing (div, Html, text, button)
-import Html.Attributes exposing (style, class)
+import Html exposing (div, Html, text, button, iframe)
+import Html.Attributes exposing (..)
 import Model exposing (Model, Status)
 import Components.Hangman exposing (hangman)
 import Components.Header exposing (header)
@@ -27,7 +27,7 @@ renderLostScreen lost =
                 "lost transparent column middle center"
     in
         div [ class className ]
-            [ div [ class "lost_caption" ] [ text "Lost" ]
+            [ div [ class "lost_caption" ] [ text "You died" ]
             , div [ class "lost_actions" ]
                 [ button [ onClick Init ] [ text "Replay" ]
                 ]
@@ -44,7 +44,7 @@ renderWonScreen won =
                 "won transparent column middle center"
     in
         div [ class className ]
-            [ div [ class "won_caption" ] [ text "Won" ]
+            [ div [ class "won_caption" ] [ text "Saved!" ]
             , div [ class "won_actions" ]
                 [ button [ onClick Init ] [ text "Replay" ]
                 ]
@@ -57,15 +57,16 @@ view model =
         sentencePosBankLength =
             Array.length model.sentencePossBank
     in
-         div
-        [ class "app column between" ]
-        [ header model.sentencePos sentencePosBankLength model.strikes 
-        , renderLostScreen (model.status == Model.Lost)
-        , renderWonScreen (model.status == Model.Won)
-        , div [ class "main column around" ]
-            [ div [ class "hangman row middle center" ]
-                [ hangman model.strikes ]
-            , boxList model.answer
+        div
+            [ class "app column between" ]
+            [ header model.sentencePos sentencePosBankLength model.strikes
+            , renderLostScreen (model.status == Model.Lost)
+            , renderWonScreen (model.status == Model.Won)
+            , div [ class "main column around" ]
+                [ div [ class "hangman row middle center" ]
+                    [ hangman model.strikes ]
+                , boxList model.answer
+                ]
+            , keyboard (model.status == Model.Lost) model.letters
+            , iframe [ class "github", src "https://ghbtns.com/github-btn.html?user=puemos&repo=elm-hangman&type=star&v=2", attribute "frameborder" "0", attribute "scrolling" "0", attribute "width" "170px", attribute "height" "20px" ] []
             ]
-        , keyboard (model.status == Model.Lost) model.letters
-        ]
