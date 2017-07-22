@@ -1,6 +1,5 @@
 module Update exposing (update)
 
-import Task
 import Set exposing (..)
 import Model exposing (..)
 import Actions exposing (..)
