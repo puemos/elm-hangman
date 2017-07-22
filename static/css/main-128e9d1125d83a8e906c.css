@@ -1,0 +1,150 @@
+@import url(https://fonts.googleapis.com/css?family=Press+Start+2P);@import url(https://rawcdn.githack.com/kristoferjoseph/flexboxgrid/7.0/flexboxgrid.min.css);.header {
+  padding: 10px 20px; }
+
+.header-nav button {
+  font-family: 'Press Start 2P';
+  color: white;
+  border: none;
+  background: transparent;
+  margin: 0 20px;
+  outline: none; }
+  .header-nav button:active {
+    opacity: 0.3; }
+
+.keyboard {
+  padding-bottom: 20px; }
+
+.keyboardButton {
+  position: relative;
+  color: black;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -ms-touch-action: pan-y;
+      touch-action: pan-y;
+  -webkit-user-drag: none;
+  -webkit-tap-highlight-color: transparent;
+  text-align: center;
+  margin: 5px;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  cursor: pointer; }
+
+.keyboardButton__disabled::before, .keyboardButton__disabled::after {
+  position: absolute;
+  content: '';
+  background: red;
+  display: block;
+  width: 100%;
+  height: 2px;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto; }
+
+.keyboardButton__disabled::after {
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg); }
+
+.box + .box {
+  margin-left: 15px; }
+
+.boxWord + .boxWord {
+  margin-left: 40px; }
+
+.boxList {
+  padding: 0 20px; }
+
+.hangman {
+  padding: 20px;
+  zoom: 2; }
+
+.lost {
+  position: fixed;
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+  transition: 1s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition-property: opacity;
+  opacity: 1;
+  background: rgba(255, 138, 138, 0.94); }
+  .lost.transparent {
+    z-index: -1;
+    opacity: 0; }
+
+.lost_caption {
+  margin-bottom: 100px;
+  font-family: 'Press Start 2P';
+  font-size: 27px;
+  color: white; }
+
+.lost_actions button {
+  padding: 10px 20px;
+  font-family: 'Press Start 2P';
+  font-size: 10px;
+  transition: 1s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition-property: background color;
+  color: white;
+  border: 1px solid white;
+  outline: none;
+  background: transparent; }
+  .lost_actions button:hover {
+    color: #ff8a8a;
+    background: white; }
+
+.won {
+  position: fixed;
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+  transition: 1s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition-property: opacity;
+  opacity: 1;
+  background: rgba(105, 251, 130, 0.94); }
+  .won.transparent {
+    z-index: -1;
+    width: 0;
+    opacity: 0; }
+
+.won_caption {
+  margin-bottom: 100px;
+  font-family: 'Press Start 2P';
+  font-size: 27px;
+  color: white; }
+
+.won_actions button {
+  padding: 10px 20px;
+  font-family: 'Press Start 2P';
+  font-size: 10px;
+  transition: 1s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition-property: background color;
+  color: white;
+  border: 1px solid white;
+  outline: none;
+  background: transparent; }
+  .won_actions button + button {
+    margin-left: 40px; }
+  .won_actions button:hover {
+    color: #69fb82;
+    background: white; }
+
+html {
+  font-family: 'Press Start 2P'; }
+
+.app {
+  background-color: #787878;
+  color: white;
+  height: 100vh;
+  -webkit-box-align: space-between;
+      -ms-flex-align: space-between;
+          align-items: space-between; }
+
+.github-star {
+  position: fixed;
+  bottom: 0;
+  left: 0; }
