@@ -1,5 +1,5 @@
 
-# Hangman in Elm - [Try It!](http://puemos.github.io/elm-hangman)
+# Hangman in Elm 🕴️ - [Try it now!](http://puemos.github.io/elm-hangman)
 
 ![screen](https://user-images.githubusercontent.com/13174025/28454442-935883ac-6dfb-11e7-9798-bc0f6e7ff64e.gif)
 
