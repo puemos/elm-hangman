@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^6.7.7",
-    "bootstrap-sass": "^3.3.7",
+    "bootstrap-sass": "^3.4.1",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.27.3",
     "elm": "^0.18.0",
